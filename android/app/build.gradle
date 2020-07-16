@@ -47,6 +47,30 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    flavorDimensions 'flavor'
+
+    productFlavors {
+        dev {
+            dimension 'flavor'
+
+            applicationId "io.github.v7lin.demo.dev"
+
+            manifestPlaceholders = [
+                    APP_NAME : "demo dev",
+            ]
+        }
+
+        prod {
+            dimension 'flavor'
+
+            applicationId "io.github.v7lin.demo.prod"
+
+            manifestPlaceholders = [
+                    APP_NAME : "demo prod",
+            ]
+        }
+    }
 }
 
 flutter {
