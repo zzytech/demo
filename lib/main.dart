@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:strings/strings.dart' as strings;
 
-void main() {
-  runApp(MyApp());
+void main({String flavor}) {
+  runApp(MyApp(flavor: flavor));
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({
+    Key key,
+    this.flavor,
+  }) : super(key: key);
+
+  final String flavor;
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Demo${(flavor?.isNotEmpty ?? false) ? ' ${strings.capitalize(flavor)}' : ''}',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -26,7 +34,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Home Page${(flavor?.isNotEmpty ?? false) ? ' ${strings.capitalize(flavor)}' : ''}'),
     );
   }
 }
